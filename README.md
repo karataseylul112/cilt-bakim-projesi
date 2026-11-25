@@ -8,7 +8,11 @@ Cilt tipine göre öneriler sunan interaktif analiz arayüzü ile geri sayim say
 
 
 
-https://github.com/user-attachments/assets/c175bba5-7199-4259-849e-da5ca9ed5f88
+
+
+Uploading Kayıt 2026-11-25 215516.mp4…
+
+
 
 
 
