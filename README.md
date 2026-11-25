@@ -36,7 +36,7 @@ https://github.com/user-attachments/assets/c175bba5-7199-4259-849e-da5ca9ed5f88
 3. **Tarayıcıda Aç:** Klasor içindeki `index.html` dosyasina cift tiklayarak varsayılan tarayıcında calıştır.
 4. **Canlı Önizleme:** VS Code kullanıyorsan **Live Server** eklentisi ile `index.html` üzerinden anlık olarak açabilirsin.
 
-## Proje Dosyalari
+## Proje Dosyaları
 
 - `index.html`: Bakımda ekranı ve geri sayım sayacı.
 - `style.css`: Bakımda ekranının tasarım ve renk stilleri.
