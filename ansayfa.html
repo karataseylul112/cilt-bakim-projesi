@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cilt Bakım Rehber ve Veri Analizi</title>
+
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f8ff;
+            scroll-behavior: smooth;
+        }
+
+        .hero-section {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+            border-bottom: 2px solid #dbe6ff;
+        }
+
+        .left-panel {
+            flex: 1.5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .right-panel {
+            flex: 1;
+            background: linear-gradient(160deg, #eef4ff, #e6f7f5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .content-card {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(29, 78, 216, 0.08);
+            width: 90%;
+            max-width: 500px;
+            min-height: 400px;
+            transition: 0.5s;
+        }
+
+        .quiz-option-btn,
+        .nav-btn {
+            width: 100%;
+            padding: 15px;
+            margin: 8px 0;
+            border-radius: 12px;
+            cursor: pointer;
+            border: 1px solid #0ea5e9;
+            background: #ffffff;
+            font-family: 'poppins';
+            color: #0f172a;
+            transition: 0.3s;
+            text-align: left;
+        }
+
+        .quiz-option-btn:hover,
+        .nav-btn:hover {
+            background: linear-gradient(135deg, #ff5e62, #ff9966);
+            border-color: transparent;
+            color: #ffffff;
+            transform: translateX(5px);
+        }
+
+        .brand-section {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            display: none;
+        }
+
+        .brand-box {
+            display: inline-block;
+            background: #ffffff;
+            padding: 5px 12px;
+            margin-right: 8px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            color: #0284c7;
+            border: 1px solid #bae6fd;
+        }
+
+        .extra-section {
+            padding: 80px 20px;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .info-card {
+            max-width: 800px;
+            width: 90%;
+            margin-bottom: 50px;
+            padding: 30px;
+            background: #f0f9ff;
+            border-radius: 20px;
+            border: 1px solid #e0f2fe;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: 0.8s all ease;
+        }
+
+        .info-card.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .info-icon {
+            font-size: 3rem;
+        }
+
+        .info-text h2 {
+            color: #ff5e62;
+            margin-top: 0;
+        }
+
+        .info-text p {
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .footer {
+            background: #eef4ff;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid #dbe6ff;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            color: #0284c7;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            font-size: 1.5rem;
+            color: #1e293b;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ff5e62;
+            transform: translateY(-5px);
+        }
+
+        .contact-info {
+            font-size: 0.9rem;
+            color: #334155;
+            margin-bottom: 15px;
+        }
+
+        .contact-info span {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: #64748b;
+            border-top: 1px solid #dbe6ff;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero-section">
+        <div class="left-panel">
+            <div id="main-content" class="content-card">
+                <div id="quiz-ui" class="quiz-ui">
+                    <h2 style="color: #9c7a5c;">Cilt Bakım Analizi</h2>
+                    <p style="color: #8c827b;">Şuanki Cilt Durumunuzu Seçiniz</p>
+                    <button class="quiz-option-btn" onclick="onerGoster('yagli')">Parlama ve Geniş Gözenekler</button>
+                    <button class="quiz-option-btn" onclick="onerGoster('kuru')">Gerginlik ve Pullanma</button>
+                    <button class="quiz-option-btn" onclick="onerGoster('karma')">Bölgesel yağlanma T bölgesi</button>
+                    <button class="quiz-option-btn" onclick="onerGoster('hassas')">Kızarıklık ve Yanma</button>
+                </div>
+                <div id="result-ui" style="display:none;">
+                    <h2 id="res-title" style="color:#9c7a5c;"></h2>
+                    <ul id="res-list" style="padding-left: 20px; color:#6e655f"></ul>
+                </div>
+                <p id="res-tip"
+                    style="background-color: #f3efe8; color: #3b332e; padding: 10px; border-radius: 8px; font-size: 0.9rem;">
+                </p>
+                <button onclick="location.reload()"
+                    style="background: none; border: none; color: #9c7a5c; text-decoration: underline; cursor: pointer;">
+                    TESTİ BAŞA AL.
+                    Yeniden Başlat
+                </button>
+            </div>
+            <div id="brand-ui" class="brand-section">
+                <p style="font-size: 0.7rem ; color: #8c827b; margin-bottom: 5px;">POPULER MARKALAR</p>
+                <div id="brand-list"></div>
+
+            </div>
+
+        </div>
+        <div class="right-panel">
+            <h3 style="color: #9c7a5c;">Hızlı Rehber</h3>
+            <button class="nav-btn" onclick="onerGoster('yagli')">✨Yağlı Cilt</button>
+            <button class="nav-btn" onclick="onerGoster('kuru')">🍂 Kuru Cilt</button>
+            <button class="nav-btn" onclick="onerGoster('karma')">🌀 Karma Cilt</button>
+            <button class="nav-btn" onclick="onerGoster('hassas')">🌿 Hassas Cilt</button>
+
+        </div>
+
+    </div>
+
+    <div class="extra-section">
+        <h1 style="color:#9c7a5c; margin-bottom: 50px">Bütünsel Bakım Rehberi</h1>
+        <div class="info-card">
+            <div class="info-icon">💧</div>
+            <div class="info-text">
+                <h2>İçeriden Nemlendirme</h2>
+                <p>Günde en az 2 litre su içmek, hücrelerinizin dolgun kalmasını sağlar. Ve toksinleri atarak cildinize
+                    doğal bir ışıltı kazandırır.</p>
+            </div>
+
+        </div>
+
+        <div class="info-card">
+            <div class="info-icon">🫐</div>
+            <div class="info-text">
+                <h2>Cilt Dostu Beslenme</h2>
+                <p>Antioksidan zengini yeşil sebzeler ve Omega-3 kaynağı kuruyemişler, cildin kendini onarma hızını
+                    artırır ve yaşlanma etkilerini geciktirir.</p>
+
+            </div>
+
+        </div>
+
+        <div class="info-card">
+            <div class="info-icon">⚡</div>
+            <div class="info-text">
+                <h2>Hareket ve Kan Akışı</h2>
+                <p>Düzenli egzersiz, cildin kan dolaşımını artırır ve daha sağlıklı bir görünüm sağlar.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const veriler = {
+            yagli: { baslik: "Yağlı Cilt", oneriler: ["Jel Temizleyici", "Niasinamid", "Güneş kremi"], tip: "Salisislik Asit Kullanın", markalar: ["La Roche", "CeraVe"] },
+            kuru: { baslik: "Kuru Cilt", oneriler: ["Su bazlı Temizleyici", "Nem Maskesi", "Güneş kremi"], tip: "Seramid İçeren Kremler Kullanın", markalar: ["Bioderma", "TTO"] },
+            karma: { baslik: "Karma Cilt", oneriler: ["Dengeleyici Tonik", "Kil Maskesi", "Güneş kremi"], tip: "T Bölgesine Dikkat Edin", markalar: ["Neutrogena", "Avon"] },
+            hassas: { baslik: "Hassas Cilt", oneriler: ["Yağ bazlı Temizleyici", "Nem Maskesi", "Güneş kremi"], tip: "Gliserin İçeren Ürünler Kullanın", markalar: ["Avene", "Cerave"] }
+        };
+
+        function onerGoster(tip) {
+            document.getElementById("quiz-ui").style.display = "none";
+            document.getElementById("result-ui").style.display = "block";
+            document.getElementById("brand-ui").style.display = "block";
+
+            const veri = veriler[tip];
+            document.getElementById("res-title").innerText = veri.baslik;
+            document.getElementById("res-tip").innerText = "Öneri: " + veri.tip;
+
+            const list = document.getElementById("res-list");
+            list.innerHTML = "";
+            veri.oneriler.forEach(o => { list.innerHTML += `<li>${o}</li>`; });
+
+            const blist = document.getElementById("brand-list");
+            blist.innerHTML = "";
+            veri.markalar.forEach(m => { blist.innerHTML += `<span class="brand-box">${m}</span>`; });
+        }
+
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.info-card');
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                if (cardTop < window.innerHeight * 0.85) {
+                    card.classList.add('reveal');
+                }
+            });
+        });
+    </script>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">Cilt Bakım Rehberim</div>
+
+            <div class="social-icons"><a href="https://GitHub.com/karataseylul112" target="_blank" title="GitHub">🔗</a>
+
+            </div>
+
+            <div class="contact-info"> <span>🤎<strong>Telefon:</strong>0555 555 55 55</span>
+                <span>🩵<strong>Konum:</strong>Ankara, Türkiye</span>
+
+            </div>
+
+            <div class="copyright">&copy; 2026 Cilt Bakım Rehberi, Tüm Hakları Saklıdır.</div>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+ /* Sayfanın tamamını kaplayan ve içeriği ortalayn bir ana yapı */
+
+ body {
+     background: linear-gradient(135deg, #e0f2fe, #e6f7f5);
+     /* Arka plana canlı ama ferah geçişli efekt verir. */
+     font-family: 'Segoe UI', sans-serif;
+     /* Yazı tipi olarak Segoe UI kullanılır. */
+     display: flex;
+     justify-content: center;
+     /* Yatayda ortala. */
+     align-items: center;
+     /*Dikeyde ortala. */
+     height: 100vh;
+     /* Ekran yüksekliğinin tamamını kullan.*/
+     margin: 0;
+     color: #0f172a;
+
+ }
+
+ /* Beyaz orta kutu */
+ .main-container {
+     background: #ffffff;
+     padding: 40px;
+     border-radius: 20px;
+     box-shadow: 0 20px 40px rgba(2, 132, 199, 0.14);
+     /* Kutuya derinlik katan gölge */
+     text-align: center;
+     width: 90%;
+     max-width: 450px;
+ }
+
+ /* Geri sayım kutularının dizilimi */
+ #countdown-container {
+     display: flex;
+     gap: 10px;
+     margin: 30px 0;
+
+ }
+
+ /* Her bir zaman birimi (gün,saat) kutusu */
+ .time-box {
+     background: #f0f9ff;
+     border: 1px solid #bae6fd;
+     padding: 15px 5px;
+     border-radius: 10px;
+     flex: 1;
+     /* Tüm kutulara eşit genişlikte olur */
+
+ }
+
+ /* Rakamların stili */
+ .time-box span {
+     font-size: 24px;
+     font-weight: bold;
+     color: #0284c7;
+     display: block;
+
+ }
+
+ /* Gün,saat gibi yazıların stili */
+ .time-box p {
+     margin: 5px 0 0 0;
+     font-size: 11px;
+     color: #475569;
+     text-transform: uppercase;
+ }
+
+ /*Buton tasarımı */
+ button {
+     background: linear-gradient(135deg, #ff5e62, #ff9966);
+     /*Buton canlı mercan-turuncu geçişli olacak. */
+     color: #ffffff;
+     border: none;
+     padding: 12px 25px;
+     border-radius: 50px;
+     cursor: pointer;
+     font-weight: bold;
+     transition: 0.3s;
+     /*Geçişleri yumuşatır */
+
+ }
+
+ button:hover {
+     background: linear-gradient(135deg, #f43f5e, #fb923c);
+     /*Üzerine gelince renk daha da canlanır. */
+     transform: scale(1.05);
+     /*Hafifçe büyür */
+
+ }
